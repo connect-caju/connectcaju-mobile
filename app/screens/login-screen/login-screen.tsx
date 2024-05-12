@@ -18,7 +18,7 @@ import {
   ButtonIcon,
   ButtonSpinner,
   ButtonGroup,
-  Input,
+  // Input,
   Icon,
   FormControl,
   FormControlError,
@@ -28,7 +28,7 @@ import {
   FormControlLabel,
   Box,
   HStack,
-  InputField,
+  // InputField,
   FormControlHelper,
   FormControlHelperText,
   AlertCircleIcon,
@@ -46,6 +46,7 @@ import {roles} from '../../consts/roles';
 import {secrets} from '../../realm/secrets';
 import {cooperatives} from '../../consts/cooperatives';
 import {capitalize} from '../../helpers/capitalize';
+import {Input, InputField} from '../../../components/ui/input';
 
 export default function LoginScreen() {
   const [isLoggingIn, setIsLoggingIn] = useState(true);
@@ -281,34 +282,44 @@ export default function LoginScreen() {
   }
   return (
     <SafeAreaProvider>
-      <View className="flex-1 h-full justify-center items-center p-3">
-        <HStack className="w-full">
-          <FormControl>
+      <View className="flex-1 h-full justify-center items-center bg-white dark:to-black ">
+        <HStack className="px-3">
+          <FormControl className="w-full" isRequired isInvalid>
             <FormControlLabel>
               <FormControlLabelText>Email</FormControlLabelText>
             </FormControlLabel>
 
-            <Input>
+            <Input
+              variant="rounded"
+              size="md"
+              isDisabled={false}
+              isInvalid={true}
+              isReadOnly={false}
+              className="w-full bg-black ">
               <InputField
                 type="text"
                 placeholder="Email"
                 value={email}
                 onChangeText={setEmail}
-                className='border rounded-xl text-[18px]'
                 keyboardType="email-address"
+                autoCapitalize="none"
+                className="rounded-xl"
               />
             </Input>
-            <FormControlHelper>
-              <FormControlHelperText>
-                Must be at least 6 characters
-              </FormControlHelperText>
-            </FormControlHelper>
-            <FormControlError>
-              <FormControlErrorIcon size={"md"} as={AlertCircleIcon} />
-              <FormControlErrorText>
-                At least 6 characters
-              </FormControlErrorText>
-            </FormControlError>
+            {!('email' in errors) ? (
+              <FormControlHelper>
+                <FormControlHelperText>
+                  Must be at least 6 characters
+                </FormControlHelperText>
+              </FormControlHelper>
+            ) : (
+              <FormControlError>
+                <FormControlErrorIcon size={'md'} as={AlertCircleIcon} />
+                <FormControlErrorText>
+                  At least 6 characters
+                </FormControlErrorText>
+              </FormControlError>
+            )}
           </FormControl>
         </HStack>
       </View>

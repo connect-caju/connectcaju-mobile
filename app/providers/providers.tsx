@@ -15,18 +15,18 @@ import LoginScreen from '../screens/login-screen/login-screen';
 export default function Providers({children}: {children: React.ReactNode}) {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <GluestackUIProvider>
+      <GluestackUIProvider config={config}>
         <SafeAreaProvider>
-          <AppProvider id={secrets.appID} baseUrl={secrets.baseUrl}>
+          {/* <AppProvider id={secrets.appID} baseUrl={secrets.baseUrl}>
             <UserProvider fallback={<LoginScreen />}>
               <RealmProvider
                 // @ts-expect-error TS(2322): Type '{ flexible: boolean; existingRealmFileBehavi... Remove this comment to see the full error message
                 sync={syncConfig(realm, false, () => {})}
-                fallback={<Spinner />}>
+                fallback={<Spinner />}> */}
                 {children}
-              </RealmProvider>
+              {/* </RealmProvider>
             </UserProvider>
-          </AppProvider>
+          </AppProvider> */}
         </SafeAreaProvider>
       </GluestackUIProvider>
     </GestureHandlerRootView>
