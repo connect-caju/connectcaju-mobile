@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function ActorCategoriesScreen() {
   return (
-    <View>
-      <Text>ActorCategoriesScreen</Text>
+    <View className='flex-1 bg-black'>
+      <Text className='text-red-500'>ActorCategoriesScreen</Text>
     </View>
   )
 }
