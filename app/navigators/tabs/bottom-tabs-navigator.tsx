@@ -10,6 +10,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Feather from "react-native-vector-icons/Feather";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import Octicons from "react-native-vector-icons/Octicons";
+import { Avatar, AvatarFallbackText } from '@gluestack-ui/themed';
 
 const Tabs = createBottomTabNavigator();
 
@@ -81,12 +82,17 @@ export default function BottomTabsNavigator() {
         />
         <Tabs.Screen
           options={({route})=>({title: 'Você', tabBarIcon: (tabInfo) => (
-            tabInfo.focused ? (
-                <Feather name="user" size={30} color={tabInfo.focused ? "#008000" : colorScheme === "dark" ? "#ffffff" : "#000000"}  />
-            )
-            : (
-                <Feather name="user" size={30} color={tabInfo.focused ? "#008000" : colorScheme === "dark" ? "#ffffff" : "#000000"} />
-                )
+            <Avatar size='md' className={`bg-black dark:bg-white`}>
+              <AvatarFallbackText>
+                SS
+              </AvatarFallbackText>
+            </Avatar>
+            // tabInfo.focused ? (
+            //     <Feather name="user" size={30} color={tabInfo.focused ? "#008000" : colorScheme === "dark" ? "#ffffff" : "#000000"}  />
+            // )
+            // : (
+            //     <Feather name="user" size={30} color={tabInfo.focused ? "#008000" : colorScheme === "dark" ? "#ffffff" : "#000000"} />
+            //     )
           )})}
           name="UserProfilesStack"
           component={UserProfileStackComponent}
